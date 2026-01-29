@@ -1,0 +1,18 @@
+# render.yaml
+services:
+  - type: web
+    name: legatus-n8n
+    env: node
+    region: oregon
+    buildCommand: |
+      corepack enable
+      pnpm install
+      pnpm run build
+    startCommand: pnpm run start
+    envVars:
+      - key: NODE_VERSION
+        value: "20.19.0"
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: PORT
+        value: "5678"
